@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Question Game</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    #question {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    #result {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+    #bookImage {
+        display: none;
+        max-width: 200px;
+        margin-top: 20px;
+    }
+
+  body {
+    background-image: url("tree.jpg");
+ 
+}
+body {color:white}
+</style>
+</head>
+<body>
+<h1>Question Game</h1>
+<div id="question"></div>
+<input type="text" id="answer" placeholder="Your answer"><br><br>
+<button onclick="checkAnswer()">Submit</button>
+<div id="result"></div>
+<img src="download.jpg" id="bookImage" alt="The Hitchhiker's Guide to the Galaxy">
+<script>
+    function checkAnswer() {
+        var question = document.getElementById("question").textContent;
+        var answer = document.getElementById("answer").value.trim().toLowerCase();
+        var resultDiv = document.getElementById("result");
+        var bookImage = document.getElementById("bookImage");
+
+        if (question === "What is the meaning of life?") {
+            if (answer === "42") {
+                resultDiv.textContent = "Yes, you are correct!";
+                resultDiv.style.color = "green";
+                resultDiv.style.backgroundColor = "lightgreen";
+                bookImage.style.display = "none";
+            } else {
+                resultDiv.textContent = "No, you are not right. Go and read or listen to the book.";
+                resultDiv.style.color = "red";
+                resultDiv.style.backgroundColor = "pink";
+                bookImage.style.display = "block";
+            }
+        } else if (question === "Is The Hitchhiker's Guide to the Universe a good book?") {
+            if (answer === "yes") {
+                resultDiv.textContent = "Yes, you are correct!";
+                resultDiv.style.color = "green";
+                resultDiv.style.backgroundColor = "lightgreen";
+                bookImage.style.display = "none";
+            } else {
+                resultDiv.textContent = "No, you are not right. Go and read or listen to the book.";
+                resultDiv.style.color = "red";
+                resultDiv.style.backgroundColor = "pink";
+                bookImage.style.display = "block";
+            }
+        }
+    }
+
+    function displayQuestion(question) {
+        document.getElementById("question").textContent = question;
+        document.getElementById("answer").value = "";
+        document.getElementById("result").textContent = "";
+        document.getElementById("bookImage").style.display = "none";
+    }
+</script>
+<script>
+    // Start with the first question
+    displayQuestion("What is the meaning of life?");
+</script>
+</body>
+</html>
